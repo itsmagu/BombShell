@@ -1,6 +1,17 @@
-[gd_scene format=3 uid="uid://cbh4rbrw17fkn"]
+[gd_scene load_steps=4 format=3 uid="uid://cbh4rbrw17fkn"]
 
-[node name="Node" type="Node"]
+[ext_resource type="Script" path="res://src/MainNode.cs" id="1_hkowv"]
+
+[sub_resource type="SystemFont" id="SystemFont_703ip"]
+font_names = PackedStringArray("GohuFont 11 Nerd Font Mono")
+
+[sub_resource type="SystemFont" id="SystemFont_4cs61"]
+font_names = PackedStringArray("GohuFont 14 Nerd Font Mono")
+
+[node name="empty" type="Node" node_paths=PackedStringArray("Shell", "Log")]
+script = ExtResource("1_hkowv")
+Shell = NodePath("VBoxContainer/LineEdit")
+Log = NodePath("VBoxContainer/RichTextLabel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -12,7 +23,17 @@ grow_vertical = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = SubResource("SystemFont_703ip")
+theme_override_font_sizes/normal_font_size = 11
+scroll_active = false
+scroll_following = true
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
+theme_override_fonts/font = SubResource("SystemFont_4cs61")
+theme_override_font_sizes/font_size = 14
+max_length = 48
+context_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
