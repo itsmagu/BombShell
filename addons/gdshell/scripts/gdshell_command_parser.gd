@@ -184,7 +184,7 @@ static func _construct_command(from: Array[String], command_db: GDShellCommandDB
 
 
 # `from` - token array ; `at` - index of the operator
-# `lect`, `right` - determines if the oprator mush have left or RIGHT operands
+# `left`, `right` - determines if the oprator mush have left or RIGHT operands
 static func _validate_operator(from: Array[Dictionary], at: int, left: bool, right: bool) -> Dictionary:
 	if left:
 		if not at > 0:
