@@ -4,11 +4,20 @@
 [ext_resource type="FontFile" uid="uid://c1rtritjfulgp" path="res://platfrom/fonts/GohuFont11NerdFontMono-Regular.ttf" id="2_g25nt"]
 [ext_resource type="FontFile" uid="uid://des30eistamgt" path="res://platfrom/fonts/GohuFont14NerdFontMono-Regular.ttf" id="3_mx0gb"]
 
-[node name="empty" type="Node" node_paths=PackedStringArray("Shell", "Log")]
+[node name="empty" type="Node" node_paths=PackedStringArray("Bg", "Shell", "Log")]
 script = ExtResource("1_hkowv")
+Bg = NodePath("ColorRect")
 Shell = NodePath("VBoxContainer/LineEdit")
 Log = NodePath("VBoxContainer/RichTextLabel")
 metadata/_edit_vertical_guides_ = [-25.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
