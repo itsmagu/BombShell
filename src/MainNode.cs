@@ -1,16 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using static BombShell.FileSystem;
 
 namespace BombShell;
 
 public partial class MainNode : Node
 {
+    public static Folder rootFolder = new Folder(
+        "Root",
+        [
+            new Folder(
+                "Home",
+                [
+                    new File("Angel"),
+                    new File("Map")
+                ]
+            ),
+            new File("Cool")
+        ]
+    );
+    public static Folder workspace = rootFolder;
+    public static MainNode? Instance;
     [Export] public ColorRect Bg;
     [Export] public LineEdit Shell;
     [Export] public RichTextLabel Log;
     private const uint MAX_HISTORY = 10;
     public override void _Ready(){
+        Instance ??= this;
         // Randomize Terminal Color
         Bg.Color = new Color(
             Random.Shared.NextSingle(),
@@ -61,7 +79,7 @@ public partial class MainNode : Node
                     StringComparison.CurrentCultureIgnoreCase
                 )
             )){
-            Log.Text += $"\nEXEC @ {command.GetType().Name}";
+            Log.Text += $"\nFound {command.GetType().Name.ToLower()}";
             command.Run(this);
             break;
         }
@@ -69,46 +87,35 @@ public partial class MainNode : Node
 
     private class ServerMe : Command //TODO Make me a ProcessSystem Pweese
     {
-        public override void Run(Node owner){
-            if (owner.Multiplayer.MultiplayerPeer.GetType() !=
-                typeof(OfflineMultiplayerPeer)) return;
-            WebSocketMultiplayerPeer netPeer = new WebSocketMultiplayerPeer();
-            if (netPeer.CreateServer(5270) == Error.Ok){
-                owner.Multiplayer.MultiplayerPeer = netPeer;
-                owner.Multiplayer.PeerConnected += id => {
-                    GD.Print($"{id} connected");
-                    int cool = Random.Shared.Next();
-                    GD.Print("Sent " + cool);
-                    owner.RpcId(id, MethodName.Pong, cool);
-                };
-                GD.Print("SERVER");
-            } else{
-                GD.Print("ERROR");
-            }
-        }
-    }
-
-    [Rpc(
-        MultiplayerApi.RpcMode.AnyPeer,
-        TransferMode = MultiplayerPeer.TransferModeEnum.Reliable,
-        CallLocal = false
-    )]
-    private void Pong(int pong){
-        Log.Text += $"\npong {pong}";
+        public override void Run(Node owner){ }
     }
 
     private class ClientMe : Command
     {
+        public override void Run(Node owner){ }
+    }
+
+    private class Ls : Command
+    {
         public override void Run(Node owner){
-            if (owner.Multiplayer.MultiplayerPeer.GetType() !=
-                typeof(OfflineMultiplayerPeer)) return;
-            WebSocketMultiplayerPeer netPeer = new WebSocketMultiplayerPeer();
-            if (netPeer.CreateClient("ws://localhost:5270") == Error.Ok){
-                owner.Multiplayer.MultiplayerPeer = netPeer;
-                GD.Print("CLIENT");
-            } else{
-                GD.Print("ERROR");
+            foreach (IFileSystemPoint point in workspace.Content){
+                Instance!.Log.Text += $"\n{point.Name()}";
             }
         }
     }
+
+    private class Clear : Command
+    {
+        public override void Run(Node owner){
+            Instance!.Log.Text = "CLEAR!";
+        }
+    }
+
+    private readonly List<Command> commands = [
+        new Exit(),
+        new ServerMe(),
+        new ClientMe(),
+        new Ls(),
+        new Clear()
+    ];
 }
