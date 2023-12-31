@@ -2,6 +2,7 @@
 
 namespace BombShell;
 
-public partial class MainNode : Node
+public partial class Network : Node
 {
+    
 }

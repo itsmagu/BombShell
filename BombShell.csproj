@@ -7,7 +7,4 @@
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="ENet-CSharp" Version="2.4.8" />
-  </ItemGroup>
 </Project>

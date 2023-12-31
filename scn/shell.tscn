@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct4q50p6abyl1"]
+
+[ext_resource type="Script" path="res://src/Shell.cs" id="1_rne6v"]
+[ext_resource type="FontFile" uid="uid://c1rtritjfulgp" path="res://platfrom/fonts/GohuFont11NerdFontMono-Regular.ttf" id="2_4cdqx"]
+[ext_resource type="FontFile" uid="uid://des30eistamgt" path="res://platfrom/fonts/GohuFont14NerdFontMono-Regular.ttf" id="3_sdse6"]
+
+[node name="Shell" type="Control" node_paths=PackedStringArray("Bg", "CommandLine", "ConsoleLog")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rne6v")
+Bg = NodePath("ColorRect")
+CommandLine = NodePath("VBoxContainer/LineEdit")
+ConsoleLog = NodePath("VBoxContainer/RichTextLabel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_4cdqx")
+theme_override_font_sizes/normal_font_size = 11
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_sdse6")
+theme_override_font_sizes/font_size = 14

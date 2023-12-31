@@ -2,10 +2,9 @@
 
 namespace BombShell;
 
-public partial class MainNode
+public class CommandParser
 {
     private void Tokenize(string commandString){ //TODO Tokenize()
-        Log.Text += "\n&";
         List<Token> tokens = [];
         int current = 0;
         while (current < commandString.Length){
@@ -19,7 +18,6 @@ public partial class MainNode
                         " "
                     )
                 );
-                Log.Text += "+";
                 current++;
                 break;
             default:
@@ -29,7 +27,6 @@ public partial class MainNode
                     if (current == commandString.Length || commandString[current] == ' ')
                         break;
                     content += commandString[current];
-                    Log.Text += "_";
                     current++;
                 }
                 tokens.Add(
@@ -44,7 +41,6 @@ public partial class MainNode
             }
         }
         foreach (Token token in tokens){
-            Log.Text += $"\n{token}";
         }
     }
 

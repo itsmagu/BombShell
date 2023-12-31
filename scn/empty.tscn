@@ -1,45 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbh4rbrw17fkn"]
+[gd_scene load_steps=3 format=3 uid="uid://3vf6mvrheoer"]
 
-[ext_resource type="Script" path="res://src/MainNode.cs" id="1_hkowv"]
-[ext_resource type="FontFile" uid="uid://c1rtritjfulgp" path="res://platfrom/fonts/GohuFont11NerdFontMono-Regular.ttf" id="2_g25nt"]
-[ext_resource type="FontFile" uid="uid://des30eistamgt" path="res://platfrom/fonts/GohuFont14NerdFontMono-Regular.ttf" id="3_mx0gb"]
+[ext_resource type="Script" path="res://src/MainNode.cs" id="1_jg6ai"]
+[ext_resource type="Script" path="res://src/Launch.cs" id="2_0yvpn"]
 
-[node name="empty" type="Node" node_paths=PackedStringArray("Bg", "Shell", "Log")]
-script = ExtResource("1_hkowv")
-Bg = NodePath("ColorRect")
-Shell = NodePath("VBoxContainer/LineEdit")
-Log = NodePath("VBoxContainer/RichTextLabel")
-metadata/_edit_vertical_guides_ = [-25.0]
+[node name="Empty" type="Node"]
+script = ExtResource("1_jg6ai")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="launch" type="Control" parent="." node_paths=PackedStringArray("ServerMe", "ClientMe", "MachineMe", "ConnectMe")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
+script = ExtResource("2_0yvpn")
+ServerMe = NodePath("HBoxContainer/ServerMe")
+ClientMe = NodePath("HBoxContainer/ClientMe")
+MachineMe = NodePath("HBoxContainer/MachineMe")
+ConnectMe = NodePath("HBoxContainer/ConnectMe")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 15
+[node name="HBoxContainer" type="HBoxContainer" parent="launch"]
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="ServerMe" type="Button" parent="launch/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("2_g25nt")
-theme_override_font_sizes/normal_font_size = 11
-scroll_active = false
-scroll_following = true
+size_flags_horizontal = 3
+text = "Server Me"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+[node name="ClientMe" type="Button" parent="launch/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_mx0gb")
-theme_override_font_sizes/font_size = 14
-max_length = 48
-context_menu_enabled = false
-shortcut_keys_enabled = false
-middle_mouse_paste_enabled = false
-drag_and_drop_selection_enabled = false
+size_flags_horizontal = 3
+text = "Client Me"
+
+[node name="MachineMe" type="Button" parent="launch/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Machine Me"
+
+[node name="ConnectMe" type="Button" parent="launch/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Connect Me"
