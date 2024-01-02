@@ -1,16 +1,25 @@
 [gd_scene load_steps=2 format=3 uid="uid://3vf6mvrheoer"]
 
-[ext_resource type="Script" path="res://src/MainNode.cs" id="1_jg6ai"]
+[ext_resource type="Script" path="res://src/SeatManager.cs" id="1_pvs1d"]
 
-[node name="Empty" type="Node" node_paths=PackedStringArray("seatWindow")]
-script = ExtResource("1_jg6ai")
-seatWindow = NodePath("SeatWindow")
+[node name="Empty" type="Node"]
 
-[node name="SeatWindow" type="VBoxContainer" parent="."]
+[node name="SeatWindow" type="VBoxContainer" parent="." node_paths=PackedStringArray("seatHandle", "machineTab")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_pvs1d")
+seatHandle = NodePath("SeatHandle")
+machineTab = NodePath("HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SeatWindow"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="SeatHandle" type="Control" parent="SeatWindow"]
+layout_mode = 2
 size_flags_vertical = 3

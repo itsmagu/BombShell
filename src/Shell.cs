@@ -39,10 +39,15 @@ public partial class Shell : Control
             case Key.F5:
                 ConsoleLog.Text = "~Reset Console";
                 break;
-            default:
-                return;
+            default: return;
             }
             GetViewport().SetInputAsHandled();
         }
     }
+}
+
+interface IShell
+{
+    void Out();
+    void In();
 }
