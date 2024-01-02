@@ -1,52 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://3vf6mvrheoer"]
+[gd_scene load_steps=2 format=3 uid="uid://3vf6mvrheoer"]
 
 [ext_resource type="Script" path="res://src/MainNode.cs" id="1_jg6ai"]
-[ext_resource type="Script" path="res://src/Launch.cs" id="2_0yvpn"]
 
-[node name="Empty" type="Node"]
+[node name="Empty" type="Node" node_paths=PackedStringArray("seatWindow")]
 script = ExtResource("1_jg6ai")
+seatWindow = NodePath("SeatWindow")
 
-[node name="launch" type="Control" parent="." node_paths=PackedStringArray("ServerMe", "ClientMe", "MachineMe", "ConnectMe")]
-layout_mode = 3
+[node name="SeatWindow" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_0yvpn")
-ServerMe = NodePath("HBoxContainer/ServerMe")
-ClientMe = NodePath("HBoxContainer/ClientMe")
-MachineMe = NodePath("HBoxContainer/MachineMe")
-ConnectMe = NodePath("HBoxContainer/ConnectMe")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="launch"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ServerMe" type="Button" parent="launch/HBoxContainer"]
-layout_mode = 2
 size_flags_horizontal = 3
-text = "Server Me"
-
-[node name="ClientMe" type="Button" parent="launch/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Client Me"
-
-[node name="MachineMe" type="Button" parent="launch/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Machine Me"
-
-[node name="ConnectMe" type="Button" parent="launch/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Connect Me"
+size_flags_vertical = 3

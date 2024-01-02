@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://oq1r713w745c"]
+
+[ext_resource type="FontFile" uid="uid://c1rtritjfulgp" path="res://platfrom/fonts/GohuFont11NerdFontMono-Regular.ttf" id="1_mkjhb"]
+[ext_resource type="Script" path="res://src/FatherLog.cs" id="1_qs0hv"]
+
+[node name="fatherlog" type="Control" node_paths=PackedStringArray("log")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qs0hv")
+log = NodePath("RichTextLabel")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_mkjhb")
+theme_override_font_sizes/normal_font_size = 11
