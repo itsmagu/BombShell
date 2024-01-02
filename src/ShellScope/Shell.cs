@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace BombShell;
+namespace BombShell.ShellScope;
 
 public partial class Shell : Control
 {

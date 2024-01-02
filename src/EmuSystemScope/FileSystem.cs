@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BombShell;
+namespace BombShell.EmuSystemScope;
 
-public class EmuFileSystem
+public class FileSystem
 {
     public bool Used { get; set; } = false;
     public Folder Root { get; } = new Folder();

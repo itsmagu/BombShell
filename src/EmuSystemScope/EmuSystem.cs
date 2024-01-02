@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BombShell;
+namespace BombShell.EmuSystemScope;
 
 public class EmuSystem
 {
@@ -10,8 +10,8 @@ public class EmuSystem
     //Properties
     public EmuState EmuState { get; private set; } = EmuState.Offline;
     public List<User> Users { get; } = [new User("root", true)];
-    public FatherLog? ConnectedFatherLog = null!;
-    public EmuFileSystem? FileSystem { get; set; }
+    public SeatManScope.FatherLog? ConnectedFatherLog = null!;
+    public FileSystem? FileSystem { get; set; }
 
     //Methods
     public string Boot(){ //TODO Async this

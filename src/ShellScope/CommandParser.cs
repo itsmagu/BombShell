@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BombShell;
+namespace BombShell.ShellScope;
 
 public class CommandParser
 {

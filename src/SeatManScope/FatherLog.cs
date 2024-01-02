@@ -1,6 +1,6 @@
 using Godot;
 
-namespace BombShell;
+namespace BombShell.SeatManScope;
 
 public partial class FatherLog : Control
 {

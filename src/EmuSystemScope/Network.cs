@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace BombShell;
+namespace BombShell.EmuSystemScope;
 
 public partial class Network : Node
 {

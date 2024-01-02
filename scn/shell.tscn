@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ct4q50p6abyl1"]
 
-[ext_resource type="Script" path="res://src/Shell.cs" id="1_rne6v"]
+[ext_resource type="Script" path="res://src/ShellScope/Shell.cs" id="1_rne6v"]
 [ext_resource type="FontFile" uid="uid://c1rtritjfulgp" path="res://platfrom/fonts/GohuFont11NerdFontMono-Regular.ttf" id="2_4cdqx"]
 [ext_resource type="FontFile" uid="uid://des30eistamgt" path="res://platfrom/fonts/GohuFont14NerdFontMono-Regular.ttf" id="3_sdse6"]
 
