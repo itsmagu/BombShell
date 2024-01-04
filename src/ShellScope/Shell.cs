@@ -44,6 +44,9 @@ public partial class Shell : Control
             GetViewport().SetInputAsHandled();
         }
     }
+    public static Shell Instantiate(){
+        return GD.Load<PackedScene>("res://scn/shell.tscn").Instantiate<Shell>();
+    }
 }
 
 interface IShell

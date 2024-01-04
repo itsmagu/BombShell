@@ -1,0 +1,33 @@
+using BombShell.EmuSystemScope;
+using BombShell.SeatManScope;
+using Godot;
+
+namespace BombShell;
+
+public partial class MainNode : Node
+{
+    public override void _EnterTree(){
+    }
+    public override void _Ready(){
+        // Load SeatMan
+        SeatManager seatManager = GD.Load<PackedScene>("res://scn/seatMan.tscn")
+            .Instantiate<SeatManager>();
+        AddChild(seatManager);
+        // Load a FL for our first Machine
+        FatherLog fatherLog = FatherLog.Instantiate();
+        // Create our first Machine
+        EmuSystem emuSystem = new EmuSystem() {
+            connectedFatherLog = fatherLog,
+            FileSystem = new EmuFileSystem() {
+                RootContent = EmuFileSystem.StandardFileSystem()
+            }
+        };
+        Game.ClientMachines.Add(emuSystem);
+        // Add the FL to the SeatMan
+        seatManager.AddSeat(fatherLog);
+        seatManager.CurrentSelectedSeat = 0;
+        seatManager.RebuildTabs();
+        // Boot the System and return to FL with the log
+        fatherLog.Send("FL", emuSystem.Boot());
+    }
+}

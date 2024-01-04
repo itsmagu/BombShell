@@ -2,7 +2,7 @@
 
 namespace BombShell.EmuSystemScope;
 
-public partial class Network : Node
+public partial class EmuNetwork : Node
 {
     
 }

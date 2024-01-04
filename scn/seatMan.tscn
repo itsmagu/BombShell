@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://2tyqih4vi6ld"]
+
+[ext_resource type="Script" path="res://src/SeatManScope/SeatManager.cs" id="1_wygnu"]
+[ext_resource type="FontFile" uid="uid://c1rtritjfulgp" path="res://platfrom/fonts/GohuFont11NerdFontMono-Regular.ttf" id="2_xfeto"]
+
+[node name="SeatWindow" type="VBoxContainer" node_paths=PackedStringArray("seatHandle", "seatTab")]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_wygnu")
+seatHandle = NodePath("SeatHandle")
+seatTab = NodePath("HBoxContainer")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xfeto")
+theme_override_font_sizes/font_size = 11
+text = "SeatMan HyperVisor (SMHV.0.1)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="SeatHandle" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
