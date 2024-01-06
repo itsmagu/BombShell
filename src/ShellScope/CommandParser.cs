@@ -40,8 +40,7 @@ public class CommandParser
                 break;
             }
         }
-        foreach (Token token in tokens){
-        }
+        foreach (Token token in tokens){ }
     }
 
     private struct Token(TokenType type, int start, int consumed, string content)

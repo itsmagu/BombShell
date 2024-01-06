@@ -1,0 +1,99 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "Qommon/4.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Qommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Qommon.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Qommon/4.0.1": {
+      "sha512": "ghT7L2enRlK82KyOpiqEtxJ5reMEKrkoVifL74qA6lP2XWRqEze18CXzk0FY40KV5PC51CaQgbFC9u9Gthti0g==",
+      "type": "package",
+      "path": "qommon/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Qommon.dll",
+        "lib/net6.0/Qommon.xml",
+        "lib/net7.0/Qommon.dll",
+        "lib/net7.0/Qommon.xml",
+        "qommon.4.0.1.nupkg.sha512",
+        "qommon.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "Qommon >= 4.0.1"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\SONY\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Home\\Source\\Godot\\BombShell\\lua\\Laylua\\Laylua.csproj",
+      "projectName": "Laylua",
+      "projectPath": "C:\\Home\\Source\\Godot\\BombShell\\lua\\Laylua\\Laylua.csproj",
+      "packagesPath": "C:\\Users\\SONY\\.nuget\\packages\\",
+      "outputPath": "C:\\Home\\Source\\Godot\\BombShell\\lua\\Laylua\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\SONY\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "dependencies": {
+          "Qommon": {
+            "target": "Package",
+            "version": "[4.0.1, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

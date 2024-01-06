@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BombShell.EmuSystemScope;
+namespace BombShell.EmuSystemScope.Software;
 
 public struct User(string name, bool rootAccess)
 {

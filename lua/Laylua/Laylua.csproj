@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="./Laylua.targets"/>
+    <PropertyGroup>
+
+        <RootNamespace>Laylua</RootNamespace>
+
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <!--    <PropertyGroup>-->
+    <!--        <DefineConstants>TRACE_PANIC</DefineConstants>-->
+    <!--    </PropertyGroup>-->
+
+    <ItemGroup>
+        <PackageReference Include="Qommon" Version="4.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Laylua.targets" />
+      <None Remove=".gdignore" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    </PropertyGroup>
+
+</Project>

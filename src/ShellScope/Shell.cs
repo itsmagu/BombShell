@@ -1,9 +1,10 @@
 ﻿using System;
+using BombShell.EmuSystemScope;
 using Godot;
 
 namespace BombShell.ShellScope;
 
-public partial class Shell : Control
+public partial class Shell : Control, IShell
 {
     // Godot Properties
     [Export] public ColorRect Bg = null!;             // Export Attribute will expose
@@ -47,10 +48,7 @@ public partial class Shell : Control
     public static Shell Instantiate(){
         return GD.Load<PackedScene>("res://scn/shell.tscn").Instantiate<Shell>();
     }
-}
-
-interface IShell
-{
-    void Out();
-    void In();
+    public void PrintToShell(string message){
+        ConsoleLog.Text += $"\n{message}";
+    }
 }

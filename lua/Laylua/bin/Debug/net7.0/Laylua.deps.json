@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Laylua/1.0.0": {
+        "dependencies": {
+          "Qommon": "4.0.1"
+        },
+        "runtime": {
+          "Laylua.dll": {}
+        }
+      },
+      "Qommon/4.0.1": {
+        "runtime": {
+          "lib/net7.0/Qommon.dll": {
+            "assemblyVersion": "4.0.1.0",
+            "fileVersion": "4.0.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Laylua/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Qommon/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ghT7L2enRlK82KyOpiqEtxJ5reMEKrkoVifL74qA6lP2XWRqEze18CXzk0FY40KV5PC51CaQgbFC9u9Gthti0g==",
+      "path": "qommon/4.0.1",
+      "hashPath": "qommon.4.0.1.nupkg.sha512"
+    }
+  }
+}

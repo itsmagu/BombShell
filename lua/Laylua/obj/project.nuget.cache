@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HKVnf4z2soWp8CxSkGWSMAP8ZssqFjWkOFNqIITbf2ByW+ZUkQa7yyF3NF9RUZSyqKAOD4iB99jP0n6OwJABoA==",
+  "success": true,
+  "projectFilePath": "C:\\Home\\Source\\Godot\\BombShell\\lua\\Laylua\\Laylua.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SONY\\.nuget\\packages\\qommon\\4.0.1\\qommon.4.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

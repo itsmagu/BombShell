@@ -1,3 +1,4 @@
+using BombShell.EmuSystemScope;
 using Godot;
 
 namespace BombShell.SeatManScope;
@@ -5,8 +6,8 @@ namespace BombShell.SeatManScope;
 public partial class FatherLog : Control
 {
     [Export] private RichTextLabel log = null!;
-    public void Send(string caller,string message){
-        log.Text += $"\n[{caller}] {message}";
+    public void SendToLog(object source, string message){
+        log.Text += $"\n[{source}] {message}";
     }
     public static FatherLog Instantiate(){
         return GD.Load<PackedScene>("res://scn/fatherLog.tscn").Instantiate<FatherLog>();

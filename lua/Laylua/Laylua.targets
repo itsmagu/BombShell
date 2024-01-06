@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <WarningsAsErrors>Nullable</WarningsAsErrors>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+    <PropertyGroup>
+        <NoWarn>
+            CA2255, <!-- The 'ModuleInitializer' attribute is only intended to be used in application code or advanced source generator scenarios -->
+            CS0078, <!-- The 'l' suffix is easily confused with the digit '1' - use 'L' for clarity -->
+            CA1401, <!-- P/Invokes should not be visible-->
+        </NoWarn>
+    </PropertyGroup>
+</Project>

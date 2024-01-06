@@ -1,61 +1,40 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BombShell.EmuSystemScope;
-
-public class EmuFileSystem
-{
-    public bool Used { get; set; }
-    public Folder RootContent { get; init; } = new Folder();
-    public static Folder StandardFileSystem(){
-        return new Folder() {
-            Folders = {
-                "bin", {
-                    "home", new Folder() {
-                        Files = {
-                            "root",
-                            "coolcool",
-                            "niceguy"
-                        }
-                    }
-                },
-                "etc",
-                "root",
-                "boot"
-            },
-            Files = {
-                "boot",
-                "user",
-                "boot"
-            }
-        };
-    }
-};
+namespace BombShell.EmuSystemScope.Filesystem;
 
 public class Folder()
 {
+    // Folders in this folder
     public class FolderDirectories : SortedDictionary<string, Folder>
     {
         public void Add(string name){
+            name = name.Replace(" ", "");
             if (ContainsKey(name)) return;
             base.Add(name, new Folder());
         }
     }
 
+    public FolderDirectories Folders { get; } = [];
+
+    // Files in this folder
     public class FolderContent : SortedDictionary<string, File>
     {
         public void Add(string name, string content){
+            name = name.Replace(" ", "");
             if (ContainsKey(name)) return;
             base.Add(name, new File(content));
         }
         public void Add(string name){
+            name = name.Replace(" ", "");
             if (ContainsKey(name)) return;
             base.Add(name, new File(""));
         }
     }
 
-    public FolderDirectories Folders { get; } = [];
     public FolderContent Files { get; } = [];
+
+    // Methods
     public string ListAllRecursive(int maxDepth = 1){
         string s = "";
         int depth = 0;
@@ -79,9 +58,4 @@ public class Folder()
             depth--;
         }
     }
-}
-
-public class File(string content)
-{
-    public string Content { get; } = content;
 }
