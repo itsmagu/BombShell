@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Laylua.Moon.Enums;
+using Laylua.Moon.Native.Structures;
 
 namespace Laylua.Library.Entities.Reference.Function;
 
@@ -30,7 +31,7 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         reference.Lua.Stack.EnsureFreeCapacity(argumentCount + 1);
 
-        var L = reference.Lua.GetStatePointer();
+        lua_State* L = reference.Lua.GetStatePointer();
         top = lua_gettop(L);
 
         PushValue(reference);
@@ -38,15 +39,15 @@ public sealed unsafe partial class LuaFunction : LuaReference
 
     internal static LuaFunctionResults PCall(Lua lua, int oldTop, int argumentCount)
     {
-        var L = lua.GetStatePointer();
-        var status = lua_pcall(L, argumentCount, LUA_MULTRET, 0);
+        lua_State* L = lua.GetStatePointer();
+        LuaStatus status = lua_pcall(L, argumentCount, LUA_MULTRET, 0);
         if (status.IsError())
         {
             lua.ThrowLuaException(status);
         }
 
-        var newTop = lua_gettop(L);
-        var range = LuaStackValueRange.FromTop(lua.Stack, oldTop, newTop);
+        int newTop = lua_gettop(L);
+        LuaStackValueRange range = LuaStackValueRange.FromTop(lua.Stack, oldTop, newTop);
         return new LuaFunctionResults(range);
     }
 
@@ -60,7 +61,7 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        PrepareFunction(this, out var top, 0);
+        PrepareFunction(this, out int top, 0);
 
         return PCall(Lua, top, 0);
     }
@@ -77,7 +78,7 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        PrepareFunction(this, out var top, 1);
+        PrepareFunction(this, out int top, 1);
 
         try
         {
@@ -106,7 +107,7 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        PrepareFunction(this, out var top, 2);
+        PrepareFunction(this, out int top, 2);
 
         try
         {
@@ -138,7 +139,7 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        PrepareFunction(this, out var top, 3);
+        PrepareFunction(this, out int top, 3);
 
         try
         {
@@ -173,7 +174,7 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        PrepareFunction(this, out var top, 4);
+        PrepareFunction(this, out int top, 4);
 
         try
         {
@@ -202,13 +203,13 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        var argumentCount = arguments.Length;
+        int argumentCount = arguments.Length;
 
-        PrepareFunction(this, out var top, argumentCount);
+        PrepareFunction(this, out int top, argumentCount);
 
         try
         {
-            foreach (var argument in arguments)
+            foreach (object? argument in arguments)
             {
                 Lua.Marshaler.PushValue(argument);
             }
@@ -233,13 +234,13 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        var argumentCount = arguments.Length;
+        int argumentCount = arguments.Length;
 
-        PrepareFunction(this, out var top, argumentCount);
+        PrepareFunction(this, out int top, argumentCount);
 
         try
         {
-            foreach (var argument in arguments)
+            foreach (LuaStackValue argument in arguments)
             {
                 argument.PushValue();
             }
@@ -264,13 +265,13 @@ public sealed unsafe partial class LuaFunction : LuaReference
     {
         ThrowIfInvalid();
 
-        var argumentCount = arguments.Count;
+        int argumentCount = arguments.Count;
 
-        PrepareFunction(this, out var top, argumentCount);
+        PrepareFunction(this, out int top, argumentCount);
 
         try
         {
-            foreach (var argument in arguments)
+            foreach (LuaStackValue argument in arguments)
             {
                 argument.PushValue();
             }

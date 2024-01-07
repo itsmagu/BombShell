@@ -1,5 +1,6 @@
 ﻿using System;
-using BombShell.EmuSystemScope;
+using System.Collections;
+using System.Collections.Generic;
 using Godot;
 
 namespace BombShell.ShellScope;
@@ -10,6 +11,7 @@ public partial class Shell : Control, IShell
     [Export] public ColorRect Bg = null!;             // Export Attribute will expose
     [Export] public LineEdit CommandLine = null!;     // these to Godot. So they are
     [Export] public RichTextLabel ConsoleLog = null!; // not null when loaded via Godot
+    public Queue<string> CommandQueue { get; } = new Queue<string>();
     public override void _Ready(){
         // Randomize Terminal Color
         Bg.Color = new Color(
@@ -32,6 +34,7 @@ public partial class Shell : Control, IShell
             switch (eventKey.Keycode){
             case Key.Enter:
                 ConsoleLog.Text += $"\n>{CommandLine.Text}";
+                CommandQueue.Enqueue(CommandLine.Text);
                 CommandLine.Text = "";
                 break;
             case Key.Escape:

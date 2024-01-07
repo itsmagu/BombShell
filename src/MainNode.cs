@@ -18,19 +18,30 @@ public partial class MainNode : Node
         // Shell
         Shell shell = Shell.Instantiate();
         // Create our first Machine
-        EmuSystem emuSystem = new EmuSystem() {
-            connectedFatherLog = fatherLog,
-            connectedShell = shell,
-            FileSystem =
-                new EmuFileSystem() { RootContent = EmuFileSystem.StandardFileSystem() }
-        };
-        Game.ClientMachines.Add(emuSystem);
+        Game.ClientMachines.Add(
+            new EmuSystem() {
+                ConnectedFatherLog = fatherLog,
+                ConnectedShell = shell,
+                FileSystem = new EmuFileSystem() {
+                    RootContent = EmuFileSystem.StandardFileSystem()
+                }
+            }
+        );
         // Add the FL to the SeatMan
         seatManager.AddSeat(fatherLog);
         seatManager.AddSeat(shell);
         seatManager.CurrentSelectedSeat = 0;
         seatManager.RebuildTabs();
         // Boot the System and return to FL with the log
-        fatherLog.SendToLog(this, emuSystem.Boot());
+        fatherLog.SendToLog(
+            "main node",
+            new EmuSystem() {
+                ConnectedFatherLog = fatherLog,
+                ConnectedShell = shell,
+                FileSystem = new EmuFileSystem() {
+                    RootContent = EmuFileSystem.StandardFileSystem()
+                }
+            }.Boot()
+        );
     }
 }

@@ -18,6 +18,10 @@ boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 
+[autoload]
+
+Game="*res://src/Game.cs"
+
 [display]
 
 window/size/viewport_width=640
@@ -35,7 +39,7 @@ enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [physics]
 
-common/physics_ticks_per_second=20
+common/physics_ticks_per_second=2
 common/max_physics_steps_per_frame=1
 common/enable_object_picking=false
 

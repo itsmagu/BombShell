@@ -44,6 +44,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("2_4cdqx")
 theme_override_font_sizes/normal_font_size = 11
+scroll_active = false
+scroll_following = true
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
