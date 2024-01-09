@@ -1,0 +1,8 @@
+C:\Home\Source\Godot\BombShell\lua\Laylua\bin\ExportRelease\net8.0\Laylua.deps.json
+C:\Home\Source\Godot\BombShell\lua\Laylua\bin\ExportRelease\net8.0\Laylua.dll
+C:\Home\Source\Godot\BombShell\lua\Laylua\obj\ExportRelease\net8.0\Laylua.csproj.AssemblyReference.cache
+C:\Home\Source\Godot\BombShell\lua\Laylua\obj\ExportRelease\net8.0\Laylua.GeneratedMSBuildEditorConfig.editorconfig
+C:\Home\Source\Godot\BombShell\lua\Laylua\obj\ExportRelease\net8.0\Laylua.csproj.CoreCompileInputs.cache
+C:\Home\Source\Godot\BombShell\lua\Laylua\obj\ExportRelease\net8.0\Laylua.dll
+C:\Home\Source\Godot\BombShell\lua\Laylua\obj\ExportRelease\net8.0\refint\Laylua.dll
+C:\Home\Source\Godot\BombShell\lua\Laylua\obj\ExportRelease\net8.0\ref\Laylua.dll

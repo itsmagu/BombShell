@@ -1,4 +1,3 @@
-using BombShell.EmuSystemScope;
 using Godot;
 
 namespace BombShell.SeatManScope;

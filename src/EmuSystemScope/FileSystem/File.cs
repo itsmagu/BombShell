@@ -1,6 +1,6 @@
 ﻿namespace BombShell.EmuSystemScope.Filesystem;
 
-public class File(string content)
+public partial class File(string content) : Godot.Resource
 {
     public string Content { get; } = content;
 }

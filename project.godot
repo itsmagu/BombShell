@@ -20,7 +20,7 @@ boot_splash/use_filter=false
 
 [autoload]
 
-Game="*res://src/Game.cs"
+MainNode="*res://src/MainNode.cs"
 
 [display]
 

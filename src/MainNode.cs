@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using BombShell.EmuSystemScope;
 using BombShell.EmuSystemScope.Filesystem;
 using BombShell.SeatManScope;
@@ -6,42 +7,42 @@ using Godot;
 
 namespace BombShell;
 
+public static class Main
+{
+    public static List<EmuSystem> ClientMachines { get; } = [];
+}
+
 public partial class MainNode : Node
 {
+    public static ulong GameTick { get; private set; } = 0;
+    public override void _PhysicsProcess(double delta){
+        foreach (EmuSystem clientMachine in Main.ClientMachines){
+            clientMachine.Process(GameTick);
+        }
+        ++GameTick;
+    }
     public override void _Ready(){
-        // Load SeatMan
         SeatManager seatManager = GD.Load<PackedScene>("res://scn/seatMan.tscn")
             .Instantiate<SeatManager>();
         AddChild(seatManager);
-        // Load a FL for our first Machine
+        
         FatherLog fatherLog = FatherLog.Instantiate();
-        // Shell
         Shell shell = Shell.Instantiate();
-        // Create our first Machine
-        Game.ClientMachines.Add(
-            new EmuSystem() {
-                ConnectedFatherLog = fatherLog,
-                ConnectedShell = shell,
-                FileSystem = new EmuFileSystem() {
-                    RootContent = EmuFileSystem.StandardFileSystem()
-                }
+        EmuSystem emuSystem = new EmuSystem() {
+            ConnectedFatherLog = fatherLog,
+            ConnectedShell = shell,
+            FileSystem = new EmuFileSystem() {
+                RootContent = EmuFileSystem.StandardFileSystem()
             }
-        );
-        // Add the FL to the SeatMan
+        };
+        
+        Main.ClientMachines.Add(emuSystem);
+        
         seatManager.AddSeat(fatherLog);
         seatManager.AddSeat(shell);
-        seatManager.CurrentSelectedSeat = 0;
+        seatManager.CurrentSelectedSeat = 1;
         seatManager.RebuildTabs();
-        // Boot the System and return to FL with the log
-        fatherLog.SendToLog(
-            "main node",
-            new EmuSystem() {
-                ConnectedFatherLog = fatherLog,
-                ConnectedShell = shell,
-                FileSystem = new EmuFileSystem() {
-                    RootContent = EmuFileSystem.StandardFileSystem()
-                }
-            }.Boot()
-        );
+        
+        fatherLog.SendToLog("main node", Main.ClientMachines[0].Boot());
     }
 }

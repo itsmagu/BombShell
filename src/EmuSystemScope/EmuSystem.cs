@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using BombShell.EmuSystemScope.Filesystem;
 using BombShell.EmuSystemScope.Software;
 using BombShell.SeatManScope;
 using BombShell.ShellScope;
+using Godot;
 using Laylua.Library;
 
 namespace BombShell.EmuSystemScope;
@@ -16,12 +16,7 @@ public class EmuSystem
     public IShell? ConnectedShell { get; set; } = null;
     public EmuFileSystem? FileSystem { get; init; }
     public SortedDictionary<uint, Process> ProcessQue { get; } = new() {
-        {
-            1, new Process(
-                Proc,
-                new User("root", true)
-            )
-        }
+        { 1, new Process(Proc, new User("root", true)) }
     };
     private static void Proc(ulong tick, IShell? shell, Lua lua){
         if (shell?.CommandQueue.Count > 0)
@@ -39,6 +34,7 @@ public class EmuSystem
     //Methods
     public void Process(ulong gameTick){
         ConnectedFatherLog?.SendToLog("processor", gameTick.ToString());
+        GD.Print($"Machine {Main.ClientMachines.IndexOf(this)} got a tick");
         foreach (Process process in ProcessQue.Values)
             process.Proc(gameTick, ConnectedShell, process.LuaMachine);
     }
