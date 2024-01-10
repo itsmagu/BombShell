@@ -9,7 +9,7 @@ public partial class SeatManager : Control
     [Export] public Control seatHandle = null!;
     [Export] public Control seatTab = null!;
     // Seats and Seat Manipulation
-    public List<Control> ListOfSeats { get; } = [];
+    public static List<Control> ListOfSeats { get; } = [];
     private int _currentSelectedSeat;
     public int CurrentSelectedSeat {
         get => _currentSelectedSeat;

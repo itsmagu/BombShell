@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://2tyqih4vi6ld"]
 
-[ext_resource type="Script" path="res://src/SeatManScope/SeatManager.cs" id="1_wygnu"]
+[ext_resource type="Script" path="res://src/SeatManager.cs" id="1_cj8he"]
 [ext_resource type="FontFile" uid="uid://c1rtritjfulgp" path="res://platfrom/fonts/GohuFont11NerdFontMono-Regular.ttf" id="2_xfeto"]
 
-[node name="SeatWindow" type="VBoxContainer" node_paths=PackedStringArray("seatHandle", "seatTab")]
+[node name="SeatWindow" type="VBoxContainer" node_paths=PackedStringArray("SeatHandle", "seatTab")]
 texture_filter = 1
 texture_repeat = 1
 anchors_preset = 15
@@ -13,8 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_wygnu")
-seatHandle = NodePath("SeatHandle")
+script = ExtResource("1_cj8he")
+SeatHandle = NodePath("SeatHandle")
 seatTab = NodePath("HBoxContainer")
 
 [node name="Label" type="Label" parent="."]

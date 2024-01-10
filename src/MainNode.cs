@@ -25,24 +25,5 @@ public partial class MainNode : Node
         SeatManager seatManager = GD.Load<PackedScene>("res://scn/seatMan.tscn")
             .Instantiate<SeatManager>();
         AddChild(seatManager);
-        
-        FatherLog fatherLog = FatherLog.Instantiate();
-        Shell shell = Shell.Instantiate();
-        EmuSystem emuSystem = new EmuSystem() {
-            ConnectedFatherLog = fatherLog,
-            ConnectedShell = shell,
-            FileSystem = new EmuFileSystem() {
-                RootContent = EmuFileSystem.StandardFileSystem()
-            }
-        };
-        
-        Main.ClientMachines.Add(emuSystem);
-        
-        seatManager.AddSeat(fatherLog);
-        seatManager.AddSeat(shell);
-        seatManager.CurrentSelectedSeat = 1;
-        seatManager.RebuildTabs();
-        
-        fatherLog.SendToLog("main node", Main.ClientMachines[0].Boot());
     }
 }
